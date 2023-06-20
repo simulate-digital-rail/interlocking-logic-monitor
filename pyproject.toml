@@ -9,7 +9,8 @@ packages = [{include = "interlockinglogicmonitor"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 pyproj = "^3.4.1"
-
+yaramo = "^0.1.0"
+interlocking = "^2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
