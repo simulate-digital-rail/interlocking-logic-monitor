@@ -22,9 +22,17 @@ class MonitorInfrastructureProvider(InfrastructureProvider):
             self.point_results[yaramo_point.uuid].was_turned_left = True
         if target_orientation == "right":
             self.point_results[yaramo_point.uuid].was_turned_right = True
+        return True
 
     async def set_signal_state(self, yaramo_signal, target_state):
         if target_state == "go":
             self.signal_results[yaramo_signal.uuid].was_set_go = True
         if target_state == "halt":
             self.signal_results[yaramo_signal.uuid].was_set_halt = True
+        return True
+
+    def print_evaluation(self):
+        for uuid, point_result in self.point_results.items():
+            point_result.print_evaluation()
+        for uuid, signal_result in self.signal_results.items():
+            signal_result.print_evaluation()

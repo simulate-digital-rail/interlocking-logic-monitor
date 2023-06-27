@@ -13,7 +13,11 @@ class InterlockingLogicMonitor(object):
         self.route_results[yaramo_route.uuid].was_set = True
 
     def monitor_free_route(self, yaramo_route: Route):
-        self.route_results[yaramo_route.uuid].was_free = True
+        self.route_results[yaramo_route.uuid].was_freed = True
 
     def monitor_reset_route(self, yaramo_route: Route):
         self.route_results[yaramo_route.uuid].was_reset = True
+
+    def print_evaluation(self):
+        for uuid, route_monitor_result in self.route_results.items():
+            route_monitor_result.print_evaluation()

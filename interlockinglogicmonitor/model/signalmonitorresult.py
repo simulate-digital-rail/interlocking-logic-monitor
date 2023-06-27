@@ -1,4 +1,5 @@
 from yaramo.model import Signal
+import logging
 
 
 class SignalMonitorResult(object):
@@ -14,3 +15,7 @@ class SignalMonitorResult(object):
         if not self.was_set_halt and not self.was_set_go:
             return 0.0
         return 0.5
+
+    def print_evaluation(self):
+        logging.debug(f"{self.yaramo_signal.name} Set Halt: {self.was_set_halt}; "
+                      f"Set Go: {self.was_set_go}; Coverage: {self.get_coverage()}")

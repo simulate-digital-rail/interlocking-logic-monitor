@@ -1,4 +1,5 @@
 from yaramo.model import Node
+import logging
 
 
 class PointMonitorResult(object):
@@ -14,3 +15,7 @@ class PointMonitorResult(object):
         if not self.was_turned_left and not self.was_turned_right:
             return 0.0
         return 0.5
+
+    def print_evaluation(self):
+        logging.debug(f"{self.yaramo_point.uuid[-5:]} Turned Left: {self.was_turned_left}; "
+                      f"Turned Right: {self.was_turned_right}; Coverage: {self.get_coverage()}")
